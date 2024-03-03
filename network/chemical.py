@@ -141,6 +141,7 @@ aa2tip = [
         [" N  ", " CA ", " C  "], # mask
         ]
 
+# NOTE: This differs slightly from AF as it considers hydrogen atoms in the side chain
 torsions=[
     [ None, None, None, None ],  # ala
     [ [" N  "," CA "," CB "," CG "], [" CA "," CB "," CG "," CD "], [" CB "," CG "," CD "," NE "], [" CG "," CD "," NE "," CZ "] ],  # arg
