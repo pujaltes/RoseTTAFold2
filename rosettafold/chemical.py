@@ -142,6 +142,7 @@ aa2tip = [
         ]
 
 # NOTE: This differs slightly from AF as it considers hydrogen atoms in the side chain
+# NOTE: We remove the 3rd TYR chi [" CE1"," CZ "," OH "," HH "] to avoid planar constraints
 torsions=[
     [ None, None, None, None ],  # ala
     [ [" N  "," CA "," CB "," CG "], [" CA "," CB "," CG "," CD "], [" CB "," CG "," CD "," NE "], [" CG "," CD "," NE "," CZ "] ],  # arg
@@ -161,7 +162,7 @@ torsions=[
     [ [" N  "," CA "," CB "," OG "], [" CA "," CB "," OG "," HG "], None, None ],  # ser
     [ [" N  "," CA "," CB "," OG1"], [" CA "," CB "," OG1"," HG1"], None, None ],  # thr
     [ [" N  "," CA "," CB "," CG "], [" CA "," CB "," CG "," CD1"], None, None ],  # trp
-    [ [" N  "," CA "," CB "," CG "], [" CA "," CB "," CG "," CD1"], [" CE1"," CZ "," OH "," HH "], None ],  # tyr
+    [ [" N  "," CA "," CB "," CG "], [" CA "," CB "," CG "," CD1"], None, None ],  # tyr
     [ [" N  "," CA "," CB "," CG1"], None, None, None ],  # val
     [ None, None, None, None ],  # unk
     [ None, None, None, None ],  # mask
