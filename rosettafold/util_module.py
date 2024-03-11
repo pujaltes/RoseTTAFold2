@@ -4,7 +4,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch import einsum
 import copy
-from util import *
+from rosettafold.util import *
 
 
 def init_lecun_normal(module, scale=1.0):
@@ -411,9 +411,10 @@ class XYZConverter(nn.Module):
 
         tors_mask = self.get_tor_mask(seq, mask_in)
 
+        # NOTE: we remove the TYR chi3 angle to avoid having to deal with planar constraints
         # torsions to restrain to 0 or 180degree
-        tors_planar = torch.zeros((B, L, 10), dtype=torch.bool, device=xyz_in.device)
-        tors_planar[:, :, 5] = seq == aa2num["TYR"]  # TYR chi 3 should be planar
+        # tors_planar = torch.zeros((B, L, 10), dtype=torch.bool, device=xyz_in.device)
+        # tors_planar[:, :, 5] = seq == aa2num["TYR"]  # TYR chi 3 should be planar
 
         # idealize given xyz coordinates before computing torsion angles
         xyz = xyz_in.clone()
@@ -480,4 +481,4 @@ class XYZConverter(nn.Module):
         torsions_alt = torsions.clone()
         torsions_alt[self.torsion_can_flip[seq, :]] *= -1
 
-        return torsions, torsions_alt, tors_mask, tors_planar
+        return torsions, torsions_alt, tors_mask
