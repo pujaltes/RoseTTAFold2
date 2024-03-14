@@ -154,6 +154,7 @@ def xyz_to_c6d(xyz, params=PARAMS):
    
     N = xyz[:,:,0]
     Ca = xyz[:,:,1]
+    # NOTE: this is not the true Cb but a pseudo Cb (see rosettafold supplementary info)
     Cb = get_Cb(xyz)
     
     # 6d coordinates order: (dist,omega,theta,phi)
