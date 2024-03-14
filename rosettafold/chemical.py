@@ -12,6 +12,8 @@ num2aa=[
     ]
 
 aa2num= {x:i for i,x in enumerate(num2aa)}
+aa2num.update({"CYX": aa2num["CYS"]})
+aa2num.update({"CYM": aa2num["CYS"]})
 
 # full sc atom representation (Nx14)
 aa2long=[
